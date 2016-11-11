@@ -8,7 +8,12 @@ character.updateStats = function () {
 character.changeStat = function (s,a){
   try{
     this.stat[s] += a;
+    this.updateStats();
   } catch (e) {
     console.log("Error changing stat "+s);
   }
+}
+character.year = 0;
+character.updateYear = function () {
+  document.getElementById("yearspan").innerHTML = this.year;
 }
