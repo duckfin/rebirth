@@ -5,3 +5,10 @@ character.updateStats = function () {
     document.getElementById(s).innerHTML=this.stats[s];
   }
 }
+character.changeStat = function (s,a){
+  try{
+    this.stat[s] += a;
+  } catch (e) {
+    console.log("Error changing stat "+s);
+  }
+}
