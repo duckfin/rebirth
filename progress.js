@@ -18,7 +18,7 @@ game.mainLoop = function () {
 }
 
 function generateQuest(qlev){
-  for(var i=0;i<100<i++){
+  for(var i=0;i<100;<i++){
     game.currentQuest.encounters[i] = new Encounter(qlev,i);
   }
 }
