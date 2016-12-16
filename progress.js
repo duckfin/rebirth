@@ -31,7 +31,9 @@ function generateQuest(qlev){
   }
 }
 
-game.currentQuest.advance = function () {}
+game.currentQuest.advance = function () {
+  if(game.currentQuest.encounters[game.currentQuest.currentEncInd+1]){game.currentQuest.currentEncInd+=1;}
+}
 
 function Encounter(qlev,eind) {
   this.qlev = qlev;
