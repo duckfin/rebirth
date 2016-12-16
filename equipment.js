@@ -9,6 +9,7 @@ function Equipment(name,cost,hp,attack){
 var equipmentList = {"sword":new Equipment("Sword",10,0,1),"shield":new Equipment("Shield",10,10,0)};
 
 function equipmentClick(what){
+  what = what.substring(0,what.length-6);
   console.log("BUYING");
   if(character.stats["Gold"]>=equipmentList[what].cost){
     character.stats["Gold"]-=equipmentList[what].cost;
