@@ -32,3 +32,5 @@ function Encounter(qlev,eind) {
   this.damage = 1;
   this.health = 1;
 }
+
+game.loopID = setInterval(game.mainLoop,100);
