@@ -9,6 +9,7 @@ function Equipment(name,cost,hp,attack){
 var equipmentList = {"sword":new Equipment("Sword",10,0,1),"shield":new Equipment("Shield",10,10,0)};
 
 function equipmentClick(what){
+  console.log("BUYING");
   if(character.stats["Gold"]>=equipmentList[what].cost){
     character.stats["Gold"]-=equipmentList[what].cost;
     equipmentList[what].level += 1;
