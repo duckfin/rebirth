@@ -1,6 +1,7 @@
 var character = {};
 
 character.stats = {"STR":10,"DEX":10,"CON":10,"INT":10,"WIS":10,"CHA":10,"curHP":10,"maxHP":10,"Gold":100};
+character.statCost = {"STR":10,"DEX":10,"CON":10,"INT":10,"WIS":10,"CHA":10};
 character.year = 0;
 character.resting = 0;
 
@@ -8,27 +9,29 @@ character.baseDamageMin = 0;
 character.baseDamageMax = 2;
 character.baseHealMin = 1;
 character.baseHealMax = 2;
+character.bonusHP = 0;
 
 character.attackModifier = function () {return (1+0.01*character.stats["STR"]);}
 character.healModifier = function () {return (1+0.01*character.stats["WIS"]);}
 
+character.calcHP = function () {return character.bonusHP+character.stats["CON"];}
 character.rollAttack = function () {return character.attackModifier()*(Math.random()*(character.baseDamageMax-character.baseDamageMin)+character.baseDamageMin);}
 
-character.changeCurStat = function (s,a){
-  try{
-    this.stats[s] += a;
-    this.updateStats();
-  } catch (e) {
-    console.log("Error changing stat "+s);
-  }
-}
-character.changeMaxStat = function (s,a){
-  try{
-    this.stats[s] += a;
-    this.maxStats[s] += a;
-    this.updateStats();
-  } catch (e) {
-    console.log("Error changing stat "+s);
+function statClick(whatButton){
+  var what = whatButton.substring(0,whatButton.length-6);
+  if(character.stats["Gold"]>=character.statCost[what]){
+    character.stats["Gold"]-=character.statCost[what];
+    character.stats[what]+=1;
+    character.statCost[what]*=1.15;
+    document.getElementById(what).innerHTML=character.stats[what];
+    if(what=="CON"){
+      var newHP = character.calcHP();
+      var hpdif = newHP-character.stats["maxHP"];
+      character.stats["maxHP"]=newHP;
+      character.stats["curHP"]+=hpdif;
+      document.getElementById("curHP").innerHTML=character.stats["curHP"];
+      document.getElementById("maxHP").innerHTML=character.stats["maxHP"];
+    }
   }
 }
 
