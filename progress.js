@@ -4,6 +4,7 @@ game.currentQuest.encounters = [];
 game.currentQuest.currentEncInd = 0;
 
 function generateQuest(qlev){
+  game.currentQuest.qlev = qlev;
   for(var i=0;i<100;i++){
     game.currentQuest.encounters[i] = new Encounter(qlev,i);
   }
@@ -35,6 +36,7 @@ function generateQuest(qlev){
 }
 
 game.currentQuest.advance = function () {
+  game.updateQuestInfo();
   if(game.currentQuest.encounters[game.currentQuest.currentEncInd+1]){game.currentQuest.currentEncInd+=1;}
 }
 
@@ -46,4 +48,10 @@ function Encounter(qlev,eind) {
   this.health = 1+9.0*(eind/100.0);
 }
 
+game.updateQuestInfo = function () {
+  document.getElementById("QuestNum").innerHTML = game.currentQuest.qlev;
+  document.getElementById("yearspan").innerHTML = game.currentQuest.currentEncInd;
+}
+
+game.updateQuestInfo();
 game.loopID = setInterval(game.mainLoop,250);
