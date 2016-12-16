@@ -52,7 +52,10 @@ game.updateQuestInfo = function () {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-   game.updateQuestInfo();
+  game.updateQuestInfo();
+  for(var eq in equipmentList){
+    document.getElementById(eq+"Button").addEventListener('click',function () {equipmentClick(eq);});
+  }
 }, false);
 
 game.loopID = setInterval(game.mainLoop,250);
