@@ -8,9 +8,9 @@ function Equipment(name,cost,hp,attack){
 
 var equipmentList = {"sword":new Equipment("Sword",10,0,1),"shield":new Equipment("Shield",10,10,0)};
 
-function equipmentClick(what){
-  what = what.substring(0,what.length-6);
-  console.log("BUYING");
+function equipmentClick(whatButton){
+  what = whatButton.substring(0,whatButton.length-6);
+  console.log("BUYING "+what);
   if(character.stats["Gold"]>=equipmentList[what].cost){
     character.stats["Gold"]-=equipmentList[what].cost;
     equipmentList[what].level += 1;
@@ -20,5 +20,10 @@ function equipmentClick(what){
     character.baseDamageMin += equipmentList[what].attack;
     character.baseDamageMax += equipmentList[what].attack;
     character.updateStats();
+    updateEquipment(what);
   }
+}
+
+function updateEquipment(what){
+  document.getElementById(what+"Button").value=equipmentList[what].name+" "+equipmentList[what].level;
 }
