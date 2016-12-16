@@ -12,15 +12,18 @@ function generateQuest(qlev){
 generateQuest(1);
 
 game.mainLoop = function () {
-  var cd = character.rollAttack();
-  var out = "Character did "+cd+" damage.";
-  game.currentQuest.encounters[game.currentQuest.currentEncInd].health -= cd;
-  if(game.currentQuest.encounters[game.currentQuest.currentEncInd].health>0){
-    var ed = game.currentQuest.encounters[game.currentQuest.currentEncInd].damage;
-    character.stats["curHP"] -= ed;
-    out += " Encounter did "+ed+" damage.";
+  if(character.curHP>0 and character.resting==0){
+    var cd = character.rollAttack();
+    var out = "Character did "+cd+" damage.";
+    game.currentQuest.encounters[game.currentQuest.currentEncInd].health -= cd;
+    if(game.currentQuest.encounters[game.currentQuest.currentEncInd].health>0){
+      var ed = game.currentQuest.encounters[game.currentQuest.currentEncInd].damage;
+      character.stats["curHP"] -= ed;
+      out += " Encounter did "+ed+" damage.";
+    }
+    else {out+=" "+game.currentQuest.encounters[game.currentQuest.currentEncInd].name+" died.";game.currentQuest.advance();}
   }
-  else {out+=" "+game.currentQuest.encounters[game.currentQuest.currentEncInd].name+" died.";game.currentQuest.advance();}
+  else {character.rest();var out = "Character rested.";}
   character.updateStats();
   console.log(out);
 }
