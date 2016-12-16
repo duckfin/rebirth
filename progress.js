@@ -22,22 +22,20 @@ game.mainLoop = function () {
       character.takeDamage(ed);
       out += " Encounter did "+ed+" damage.";
     }
-    else {out+=" "+game.currentQuest.encounters[game.currentQuest.currentEncInd].name+" died.";game.currentQuest.advance();}
+    else {
+      out+=" "+game.currentQuest.encounters[game.currentQuest.currentEncInd].name+" died.";
+      game.currentQuest.advance();
+    }
   }
   else {character.rest();var out = "Character rested.";}
   character.updateStats();
   console.log(out);
 }
 
-function generateQuest(qlev){
-  for(var i=0;i<100;i++){
-    game.currentQuest.encounters[i] = new Encounter(qlev,i);
-  }
-}
-
 game.currentQuest.advance = function () {
   game.updateQuestInfo();
   if(game.currentQuest.encounters[game.currentQuest.currentEncInd+1]){game.currentQuest.currentEncInd+=1;}
+  else {game.currentQuest.currentEncInd=0;generateQuest(game.currentQuest.qlev+1);}
 }
 
 function Encounter(qlev,eind) {
