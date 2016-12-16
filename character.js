@@ -1,6 +1,6 @@
 var character = {};
 
-character.stats = {"STR":10,"DEX":10,"CON":10,"INT":10,"WIS":10,"CHA":10,"curHP":10,"maxHP":10};
+character.stats = {"STR":10,"DEX":10,"CON":10,"INT":10,"WIS":10,"CHA":10,"curHP":10,"maxHP":10,"Gold":100};
 character.year = 0;
 character.resting = 0;
 
