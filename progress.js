@@ -20,7 +20,7 @@ game.mainLoop = function () {
     character.stats["curHP"] -= ed;
     out += " Encounter did "+ed+" damage.";
   }
-  else {game.currentQuest.advance(); out+=" Encounter advanced.";}
+  else {out+=" "+game.currentQuest.encounters[game.currentQuest.currentEncInd].name+" died.";game.currentQuest.advance();}
   character.updateStats();
   console.log(out);
 }
@@ -39,8 +39,8 @@ function Encounter(qlev,eind) {
   this.qlev = qlev;
   this.eind = eind;
   this.name = "Thing";
-  this.damage = 1;
-  this.health = 1;
+  this.damage = 1+1.0*(eind/100.0);
+  this.health = 1+9.0*(eind/100.0);
 }
 
-game.loopID = setInterval(game.mainLoop,100);
+game.loopID = setInterval(game.mainLoop,250);
