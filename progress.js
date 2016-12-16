@@ -50,8 +50,11 @@ function Encounter(qlev,eind) {
 
 game.updateQuestInfo = function () {
   document.getElementById("QuestNum").innerHTML = game.currentQuest.qlev;
-  document.getElementById("yearspan").innerHTML = game.currentQuest.currentEncInd;
+  document.getElementById("EncNum").innerHTML = game.currentQuest.currentEncInd;
 }
 
-game.updateQuestInfo();
+document.addEventListener('DOMContentLoaded', function() {
+   game.updateQuestInfo();
+}, false);
+
 game.loopID = setInterval(game.mainLoop,250);
