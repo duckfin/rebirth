@@ -27,7 +27,7 @@ character.rest = function () {
 
 character.updateStats = function () {
   for(var s in this.stats){
-    document.getElementById(s).innerHTML=this.stats[s]+"/"+this.maxStats[s];
+    document.getElementById(s).innerHTML=this.stats[s];
   }
 }
 character.updateYear = function () {
