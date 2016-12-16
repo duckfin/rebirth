@@ -3,6 +3,14 @@ game.currentQuest = {};
 game.currentQuest.encounters = [];
 game.currentQuest.currentEncInd = 0;
 
+function generateQuest(qlev){
+  for(var i=0;i<100;i++){
+    game.currentQuest.encounters[i] = new Encounter(qlev,i);
+  }
+}
+
+generateQuest(1);
+
 game.mainLoop = function () {
   var cd = character.rollAttack();
   var out = "Character did "+cd+" damage.";
