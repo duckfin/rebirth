@@ -6,6 +6,8 @@
     <script src="character.js"></script>
     <script src="progress.js"></script>
     <script src="equipment.js"></script>
+    <script src="polyfills.js"></script>
+    <script src="boons.js"></script>
   </head>
   <body>
     <div id="mainpage">
@@ -26,6 +28,7 @@
             <tr><td>Gold</td><td><span id="Gold">100</span></td></tr>
             <tr><td>Favor</td><td><span id="Favor">0</span></td></tr>
             <tr><td>HP</td><td><span id="curHP">0</span>/<span id="maxHP">10</span></td></tr>
+            <tr><td>XP</td><td><span id="XP">0</span>/<span id="nextLevelXP">100</span></td></tr>
           </table>
         </div>
       </div>
@@ -43,6 +46,22 @@
         <input type="button" id="INTButton" value="Intelligence">
         <input type="button" id="WISButton" value="Wisdom">
         <input type="button" id="CHAButton" value="Charisma">
+        
+        <div id="LevelBoons">
+          
+        </div>
+        <div id="STRBoons">
+        </div>
+        <div id="DEXBoons">
+        </div>
+        <div id="CONBoons">
+        </div>
+        <div id="INTBoons">
+        </div>
+        <div id="WISBoons">
+        </div>
+        <div id="CHABoons">
+        </div>
       </div>
 
       <div id="rbdiv" style="width:49%;height:49%;display:inline-block;">
