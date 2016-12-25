@@ -1,10 +1,11 @@
 var character = {};
+character.boonList = [];
 
-character.stats = {"STR":10,"DEX":10,"CON":10,"INT":10,"WIS":10,"CHA":10,"curHP":10,"maxHP":10,"Gold":100,"XP":0};
+character.stats = {"STR":10,"DEX":10,"CON":10,"INT":10,"WIS":10,"CHA":10,"curHP":10,"maxHP":10,"Gold":100,"XP":0,"nextLevelXP":100,"Level":1};
 character.statCost = {"STR":10,"DEX":10,"CON":10,"INT":10,"WIS":10,"CHA":10};
 character.year = 0;
 character.resting = 0;
-character.nextLevelXP = 100;
+character.statXP = {"STR":0,"DEX":0,"CON":0,"INT":0,"WIS":0,"CHA":0,"Level":0};
 
 character.baseDamageMin = 0;
 character.baseDamageMax = 2;
@@ -58,6 +59,21 @@ character.updateStats = function () {
     document.getElementById(s).innerHTML=this.stats[s];
   }
 }
-character.updateYear = function () {
-  document.getElementById("yearspan").innerHTML = this.year;
+
+character.updateBoons = function(){
+  
 }
+
+character.gainXP() = function(n){
+  character.stats["XP"] += n;
+  if(character.stats["XP"]>=character.nextLevelXP){character.levelUp();}
+}
+
+character.levelUp() = function (){
+  character.stats["nextLevelXP"] *= 1.25;
+  character.stats["Level"] += 1;
+  character.statXP["Level"] += 1;
+  character.updateBoons();
+}
+
+
