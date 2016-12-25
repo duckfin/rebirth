@@ -34,6 +34,7 @@ game.mainLoop = function () {
 
 game.currentQuest.advance = function () {
   character.stats["Gold"] += game.currentQuest.encounters[game.currentQuest.currentEncInd].qlev;
+  character.gainXP(1);
   game.updateQuestInfo();
   if(game.currentQuest.encounters[game.currentQuest.currentEncInd+1]){game.currentQuest.currentEncInd+=1;}
   else {game.currentQuest.currentEncInd=0;generateQuest(game.currentQuest.qlev+1);}
