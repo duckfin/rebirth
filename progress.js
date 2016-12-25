@@ -61,6 +61,8 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById("INTButton").addEventListener('click',function () {statClick(this.id);});
   document.getElementById("WISButton").addEventListener('click',function () {statClick(this.id);});
   document.getElementById("CHAButton").addEventListener('click',function () {statClick(this.id);});
+  
+  
 }, false);
 
 game.loopID = setInterval(game.mainLoop,250);
