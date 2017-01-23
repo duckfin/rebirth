@@ -30,4 +30,14 @@ var Boon = function(name,type,a,b,c,d,e,f,g,func){
 
 window.addEventListener("load",function(){
   new Boon("Increased Damage","STR",0,10,0,0,0,0,0,function(){character.baseDamageMin+=10;character.baseDamageMax+=10;console.log("STRONGER!");});
+  new Boon("Add Hit Point","CON",0,0,0,10,0,0,0,function(){
+      character.bonusHP++;
+      var newHP = character.calcHP();
+      var hpdif = newHP-character.stats["maxHP"];
+      character.stats["maxHP"]=newHP;
+      character.stats["curHP"]+=hpdif;
+      document.getElementById("curHP").innerHTML=character.stats["curHP"];
+      document.getElementById("maxHP").innerHTML=character.stats["maxHP"];
+      console.log("You feel more healthy");
+  });
 });
