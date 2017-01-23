@@ -6,6 +6,7 @@ character.statCost = {"STR":10,"DEX":10,"CON":10,"INT":10,"WIS":10,"CHA":10};
 character.year = 0;
 character.resting = 0;
 character.statXP = {"STR":0,"DEX":0,"CON":0,"INT":0,"WIS":0,"CHA":0,"Level":0};
+character.statBoonAvail = {"STR":0,"DEX":0,"CON":0,"INT":0,"WIS":0,"CHA":0,"Level":0};
 
 character.baseDamageMin = 0;
 character.baseDamageMax = 2;
@@ -89,4 +90,9 @@ character.levelUp = function (){
 
 character.gainStatXP = function(w,n){
   character.statXP[w] += n*character.xpModifier();
+  if(w!="Level" && character.statXP[w]>=character.statCost[w]){
+    character.statXP[w]-=character.statCost[w];
+    character.statCost[w] *= 1.4;
+    character.statBoonAvail[w] += 1;
+  }
 }
