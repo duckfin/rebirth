@@ -18,6 +18,11 @@ var Boon = function(name,type,a,b,c,d,e,f,g,func){
     }
     this.func();
   }
+  var i = document.createElement("input");
+  i.type = "button";
+  i.value = name;
+  i.onclick = this.onTake;
+  document.getElementById(type+"Boons").appendChild(i);
   console.log("Boon "+name+" created and added to list.");
 }
 
