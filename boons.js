@@ -22,8 +22,6 @@ var Boon = function(name,type,a,b,c,d,e,f,g,func){
   i.type = "button";
   i.value = name;
   i.onclick = this.onTake;
-  console.log(type+"Boons");
-  console.log(document.getElementById(type+"Boons"));
   document.getElementById(type+"Boons").appendChild(i);
   console.log("Boon "+name+" created and added to list.");
 }
