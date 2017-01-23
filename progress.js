@@ -28,6 +28,7 @@ game.mainLoop = function () {
     }
   }
   else {character.rest();var out = "Character rested.";}
+  if(character.trainingStat){character.gainStatXP(character.trainingStat,1);}
   character.updateStats();
   console.log(out);
 }
