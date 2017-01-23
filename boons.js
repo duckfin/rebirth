@@ -1,22 +1,16 @@
 character.boonList = {};
 
-var Boon = function(name,type,a,b,c,d,e,f,g,func){
+var Boon = function(name,type,func){
   var thing = {};
   thing.name = name;
   thing.type = type;
   if(!character.boonList[type]){character.boonList[type] = [];}
   console.log(character.boonList[type]);
   character.boonList[type].push(thing);
-  thing.costs = {"Level":a,"STR":b,"DEX":c,"CON":d,"INT":e,"WIS":f,"CHA":g};
   thing.func = func;
   thing.onTake = function(){
-    var qualify = 1;
-    for(var k in thing.costs){
-      if(character.statXP[k]<thing.costs[k]){qualify=0;return false;}
-    }
-    for(var k in thing.costs){
-      character.statXP[k]-=thing.costs[k];
-    }
+    if(character.statBoonAvail[thing.type]<1){return false;}
+    character.statBoonAvail[thing.type]-=1;
     console.log(thing);
     thing.func();
   };
@@ -29,8 +23,8 @@ var Boon = function(name,type,a,b,c,d,e,f,g,func){
 }
 
 window.addEventListener("load",function(){
-  new Boon("Increased Damage","STR",0,10,0,0,0,0,0,function(){character.baseDamageMin+=10;character.baseDamageMax+=10;console.log("STRONGER!");});
-  new Boon("Add Hit Point","CON",0,0,0,10,0,0,0,function(){
+  new Boon("Increased Damage","STR",function(){character.baseDamageMin+=10;character.baseDamageMax+=10;console.log("STRONGER!");});
+  new Boon("Add Hit Point","CON",function(){
       character.bonusHP++;
       var newHP = character.calcHP();
       var hpdif = newHP-character.stats["maxHP"];
