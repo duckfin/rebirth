@@ -1,6 +1,10 @@
+character.boonList = {};
+
 var Boon = function(name,type,a,b,c,d,e,f,g,func){
   this.name = name;
   this.type = type;
+  if(!character.boonList[type]){character.boonList[type] = [];}
+  character.boonList[type].append(this);
   this.costs = {"Level":a,"STR":b,"DEX":c,"CON":d,"INT":e,"WIS":f,"CHA":g};
   this.func = func;
   this.onTake = function(){
@@ -13,5 +17,7 @@ var Boon = function(name,type,a,b,c,d,e,f,g,func){
     }
     this.func();
   }
+  console.log("Boon "+name+" created and added to list.");
 }
 
+new Boon("Increased Damage","STR",0,10,0,0,0,0,0,function(){character.baseDamageMin+=10;character.baseDamageMax+=10;});
