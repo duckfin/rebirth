@@ -5,7 +5,7 @@ var Boon = function(name,type,a,b,c,d,e,f,g,func){
   this.type = type;
   if(!character.boonList[type]){character.boonList[type] = [];}
   console.log(character.boonList[type]);
-  character.boonList[type].append(this);
+  character.boonList[type].push(this);
   this.costs = {"Level":a,"STR":b,"DEX":c,"CON":d,"INT":e,"WIS":f,"CHA":g};
   this.func = func;
   this.onTake = function(){
