@@ -17,6 +17,7 @@ character.trainingStat = "";
 
 character.attackModifier = function () {return (1+0.01*character.stats["STR"]);}
 character.healModifier = function () {return (1+0.01*character.stats["WIS"]);}
+character.xpModifier = function () {return (1+0.01*character.stats["INT"]);}
 
 character.calcHP = function () {return character.bonusHP+character.stats["CON"];}
 character.rollAttack = function () {return character.attackModifier()*(Math.random()*(character.baseDamageMax-character.baseDamageMin)+character.baseDamageMin);}
@@ -75,7 +76,7 @@ character.updateBoons = function(){
 }
 
 character.gainXP = function(n){
-  character.stats["XP"] += n;
+  character.stats["XP"] += n*character.xpModifier;
   if(character.stats["XP"]>=character.nextLevelXP){character.levelUp();}
 }
 
@@ -86,4 +87,6 @@ character.levelUp = function (){
   character.updateBoons();
 }
 
-
+character.gainStatXP = function(w,n){
+  character.statXP[w] += n*character.xpModifier();
+}
