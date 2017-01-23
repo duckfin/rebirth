@@ -1,30 +1,29 @@
 character.boonList = {};
 
 var Boon = function(name,type,a,b,c,d,e,f,g,func){
-  this.name = name;
-  this.type = type;
+  var thing = {};
+  thing.name = name;
+  thing.type = type;
   if(!character.boonList[type]){character.boonList[type] = [];}
   console.log(character.boonList[type]);
-  character.boonList[type].push(this);
-  this.costs = {"Level":a,"STR":b,"DEX":c,"CON":d,"INT":e,"WIS":f,"CHA":g};
-  this.func = func;
-  this.onTake = function(t){
+  character.boonList[type].push(thing);
+  thing.costs = {"Level":a,"STR":b,"DEX":c,"CON":d,"INT":e,"WIS":f,"CHA":g};
+  thing.func = func;
+  thing.onTake = function(){
     var qualify = 1;
-    console.log(t.costs);
-    console.log(character.statXP);
-    for(var k in t.costs){
-      if(character.statXP[k]<t.costs[k]){qualify=0;return false;}
+    for(var k in thing.costs){
+      if(character.statXP[k]<thing.costs[k]){qualify=0;return false;}
     }
-    for(var k in this.costs){
-      character.statXP[k]-=t.costs[k];
+    for(var k in thing.costs){
+      character.statXP[k]-=thing.costs[k];
     }
-    console.log(this);
-    t.func();
-  }
+    console.log(thing);
+    thing.func();
+  };
   var i = document.createElement("input");
   i.type = "button";
   i.value = name;
-  i.onclick = this.onTake(this);
+  i.onclick = thing.onTake;
   document.getElementById(type+"Boons").appendChild(i);
   console.log("Boon "+name+" created and added to list.");
 }
