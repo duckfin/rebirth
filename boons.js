@@ -16,6 +16,7 @@ var Boon = function(name,type,a,b,c,d,e,f,g,func){
     for(var k in this.costs){
       character.statXP[k]-=this.costs[k];
     }
+    console.log(this);
     this.func();
   }
   var f = this.onTake;
