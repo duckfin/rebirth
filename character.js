@@ -37,6 +37,13 @@ function statClick(whatButton){
   }
 }
 
+function clicked(what){
+  for(var k in character.statCost){
+    document.getElementById(k+"tr").style.fontWeight = "normal";
+  }
+  document.getElementById(what+"tr").style.fontWeight = "bold";
+}
+
 character.takeDamage = function (a) {
   character.stats["curHP"] -= a;
   if(character.stats["curHP"]<=0){
