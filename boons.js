@@ -27,5 +27,5 @@ var Boon = function(name,type,a,b,c,d,e,f,g,func){
 }
 
 window.addEventListener("load",function(){
-  new Boon("Increased Damage","STR",0,10,0,0,0,0,0,function(){character.baseDamageMin+=10;character.baseDamageMax+=10;});
+  new Boon("Increased Damage","STR",0,10,0,0,0,0,0,function(){character.baseDamageMin+=10;character.baseDamageMax+=10;console.log("STRONGER!");});
 });
