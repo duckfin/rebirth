@@ -8,7 +8,7 @@ var Boon = function(name,type,a,b,c,d,e,f,g,func){
   character.boonList[type].push(this);
   this.costs = {"Level":a,"STR":b,"DEX":c,"CON":d,"INT":e,"WIS":f,"CHA":g};
   this.func = func;
-  this.onTake = function(){
+  this.onTake = function(f){
     var qualify = 1;
     for(var k in this.costs){
       if(character.statXP[k]<this.costs[k]){qualify=0;return false;}
@@ -17,13 +17,12 @@ var Boon = function(name,type,a,b,c,d,e,f,g,func){
       character.statXP[k]-=this.costs[k];
     }
     console.log(this);
-    this.func();
+    f();
   }
-  var f = this.onTake;
   var i = document.createElement("input");
   i.type = "button";
   i.value = name;
-  i.onclick = f;
+  i.onclick = this.onTake(this.func);
   document.getElementById(type+"Boons").appendChild(i);
   console.log("Boon "+name+" created and added to list.");
 }
