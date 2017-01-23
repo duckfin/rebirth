@@ -80,7 +80,7 @@ character.updateBoons = function(){
 };
 
 character.gainXP = function(n){
-  character.stats["XP"] += n*character.xpModifier;
+  character.stats["XP"] += n*character.xpModifier();
   if(character.stats["XP"]>=character.nextLevelXP){character.levelUp();}
 }
 
