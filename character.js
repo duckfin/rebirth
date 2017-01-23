@@ -13,12 +13,14 @@ character.baseHealMin = 1;
 character.baseHealMax = 2;
 character.bonusHP = 0;
 
+character.trainingStat = "";
+
 character.attackModifier = function () {return (1+0.01*character.stats["STR"]);}
 character.healModifier = function () {return (1+0.01*character.stats["WIS"]);}
 
 character.calcHP = function () {return character.bonusHP+character.stats["CON"];}
 character.rollAttack = function () {return character.attackModifier()*(Math.random()*(character.baseDamageMax-character.baseDamageMin)+character.baseDamageMin);}
-
+/*
 function statClick(whatButton){
   var what = whatButton.substring(0,whatButton.length-6);
   if(character.stats["Gold"]>=character.statCost[what]){
@@ -35,13 +37,14 @@ function statClick(whatButton){
       document.getElementById("maxHP").innerHTML=character.stats["maxHP"];
     }
   }
-}
+}*/
 
 function clicked(what){
   for(var k in character.statCost){
     document.getElementById(k+"tr").style.fontWeight = "normal";
   }
   document.getElementById(what+"tr").style.fontWeight = "bold";
+  character.trainingStat = what;
 }
 
 character.takeDamage = function (a) {
