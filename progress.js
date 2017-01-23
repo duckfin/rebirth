@@ -3,6 +3,7 @@ game.currentQuest = {};
 game.currentQuest.encounters = [];
 game.currentQuest.checks = [];
 game.currentQuest.currentEncInd = 0;
+var randStatArray = ["STR","DEX","CON","INT","WIS","CHA"];
 
 function generateQuest(qlev){
   game.currentQuest.qlev = qlev;
@@ -59,7 +60,7 @@ function Encounter(qlev,eind) {
   this.damage = 1+1.0*(eind/100.0);
   this.health = 1+9.0*(eind/100.0);
 }
-var randStatArray = ["STR","DEX","CON","INT","WIS","CHA"];
+
 function Check(qlev,eind) {
   this.qlev = qlev;
   this.eind = eind;
