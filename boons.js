@@ -28,4 +28,6 @@ var Boon = function(name,type,a,b,c,d,e,f,g,func){
   console.log("Boon "+name+" created and added to list.");
 }
 
-new Boon("Increased Damage","STR",0,10,0,0,0,0,0,function(){character.baseDamageMin+=10;character.baseDamageMax+=10;});
+window.addEventListener("load",function(){
+  new Boon("Increased Damage","STR",0,10,0,0,0,0,0,function(){character.baseDamageMin+=10;character.baseDamageMax+=10;});
+});
