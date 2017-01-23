@@ -26,6 +26,15 @@ game.mainLoop = function () {
     }
     else {
       out+=" "+game.currentQuest.encounters[game.currentQuest.currentEncInd].name+" died.";
+      if(game.currentQuest.checks[game.currentQuest.currentEncInd]){
+        if(Math.random()<game.currentQuest.checks[game.currentQuest.currentEncInd].difficulty/(game.currentQuest.checks[game.currentQuest.currentEncInd].difficulty+character.stats[game.currentQuest.checks[game.currentQuest.currentEncInd].type])){
+          game.currentQuest.checks[game.currentQuest.currentEncInd].onFail();
+          console.log("You failed a check!");
+        } else {
+          game.currentQuest.checks[game.currentQuest.currentEncInd].onSuccess();
+          console.log("You succeeded a check!");
+        }
+      }
       game.currentQuest.advance();
     }
   }
