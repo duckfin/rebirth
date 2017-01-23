@@ -55,13 +55,6 @@ game.updateQuestInfo = function () {
 
 document.addEventListener('DOMContentLoaded', function() {
   game.updateQuestInfo();
-  document.getElementById("STRButton").addEventListener('click',function () {statClick(this.id);});
-  document.getElementById("DEXButton").addEventListener('click',function () {statClick(this.id);});
-  document.getElementById("CONButton").addEventListener('click',function () {statClick(this.id);});
-  document.getElementById("INTButton").addEventListener('click',function () {statClick(this.id);});
-  document.getElementById("WISButton").addEventListener('click',function () {statClick(this.id);});
-  document.getElementById("CHAButton").addEventListener('click',function () {statClick(this.id);});
-  
   
 }, false);
 
