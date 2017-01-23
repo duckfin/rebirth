@@ -64,12 +64,12 @@ character.updateBoons = function(){
   
 }
 
-character.gainXP() = function(n){
+character.gainXP = function(n){
   character.stats["XP"] += n;
   if(character.stats["XP"]>=character.nextLevelXP){character.levelUp();}
 }
 
-character.levelUp() = function (){
+character.levelUp = function (){
   character.stats["nextLevelXP"] *= 1.25;
   character.stats["Level"] += 1;
   character.statXP["Level"] += 1;
