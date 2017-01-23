@@ -23,7 +23,7 @@ var Boon = function(name,type,func){
 }
 
 window.addEventListener("load",function(){
-  new Boon("Increased Damage","STR",function(){character.baseDamageMin+=10;character.baseDamageMax+=10;console.log("STRONGER!");});
+  new Boon("Increased Damage","STR",function(){character.baseDamageMin+=1;character.baseDamageMax+=1;console.log("STRONGER!");});
   new Boon("Add Hit Point","CON",function(){
       character.bonusHP++;
       var newHP = character.calcHP();
