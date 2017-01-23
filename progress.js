@@ -1,12 +1,14 @@
 var game = {};
 game.currentQuest = {};
 game.currentQuest.encounters = [];
+game.currentQuest.checks = [];
 game.currentQuest.currentEncInd = 0;
 
 function generateQuest(qlev){
   game.currentQuest.qlev = qlev;
   for(var i=0;i<100;i++){
     game.currentQuest.encounters[i] = new Encounter(qlev,i);
+    game.currentQuest.checks[i] = (Math.random()<0.5)?(new Check(qlev,i)):false;
   }
 }
 
@@ -47,6 +49,16 @@ function Encounter(qlev,eind) {
   this.name = "Thing";
   this.damage = 1+1.0*(eind/100.0);
   this.health = 1+9.0*(eind/100.0);
+}
+var randStatArray = ["STR","DEX","CON","INT","WIS","CHA"];
+function Check(qlev,eind) {
+  this.qlev = qlev;
+  this.eind = eind;
+  this.type = randStatArray[Math.floor(Math.random() * randStatArray.length)];
+  this.difficulty = qlev*5*(eind/75.0);
+  this.name = "Trap";
+  this.onSuccess = function(){character.statXP[this.type] += 2;}
+  this.onFail = function(){character.takeDamage(2);}
 }
 
 game.updateQuestInfo = function () {
