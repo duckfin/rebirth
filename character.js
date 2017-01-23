@@ -47,7 +47,7 @@ function clicked(what){
   }
   document.getElementById(what+"tr").style.fontWeight = "bold";
   character.trainingStat = what;
-}
+};
 
 character.takeDamage = function (a) {
   character.stats["curHP"] -= a;
@@ -55,7 +55,7 @@ character.takeDamage = function (a) {
     character.stats["curHP"]=0;
     character.resting=1;
   }
-}
+};
 
 character.rest = function () {
   var h = character.healModifier()*(Math.random()*(character.baseHealMax-character.baseHealMin)+character.baseHealMin);
@@ -64,17 +64,20 @@ character.rest = function () {
     character.resting = 0;
     character.stats["curHP"] = character.stats["maxHP"];
   }
-}
+};
 
 character.updateStats = function () {
   for(var s in this.stats){
     document.getElementById(s).innerHTML=this.stats[s];
   }
-}
+  for(var s in character.statBoonAvail){
+    document.getElementById(s+"BN").innerHTML = character.statBoonAvail[s];
+  }
+};
 
 character.updateBoons = function(){
   
-}
+};
 
 character.gainXP = function(n){
   character.stats["XP"] += n*character.xpModifier;
