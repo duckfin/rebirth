@@ -12,15 +12,16 @@ character.baseDamageMin = 0;
 character.baseDamageMax = 2;
 character.baseHealMin = 1;
 character.baseHealMax = 2;
-character.bonusHP = 0;
+character.bonusHP = 10;
 
 character.trainingStat = "";
 
 character.attackModifier = function () {return (1+0.01*character.stats["STR"]);}
-character.healModifier = function () {return (1+0.01*character.stats["WIS"]);}
+character.evasionModifier = function () {return (1+0.01*character.stats["DEX"]);}
 character.xpModifier = function () {return (1+0.01*character.stats["INT"]);}
+character.healModifier = function () {return (1+0.01*character.stats["WIS"]);}
 
-character.calcHP = function () {return character.bonusHP+character.stats["CON"];}
+character.calcHP = function () {return character.bonusHP*(1+0.01*character.stats["CON"]);}
 character.rollAttack = function () {return character.attackModifier()*(Math.random()*(character.baseDamageMax-character.baseDamageMin)+character.baseDamageMin);}
 /*
 function statClick(whatButton){
