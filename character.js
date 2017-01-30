@@ -1,12 +1,12 @@
 var character = {};
 character.boonList = [];
 
-character.stats = {"STR":10,"DEX":10,"CON":10,"INT":10,"WIS":10,"CHA":10,"curHP":10,"maxHP":10,"Gold":100,"XP":0,"nextLevelXP":100,"Level":1};
-character.statCost = {"STR":10,"DEX":10,"CON":10,"INT":10,"WIS":10,"CHA":10};
+character.stats = {"STR":10,"CON":10,"INT":10,"WIS":10,"curHP":10,"maxHP":10,"Gold":100,"XP":0,"nextLevelXP":100,"Level":1};
+character.statCost = {"STR":10,"CON":10,"INT":10,"WIS":10};
 character.year = 0;
 character.resting = 0;
-character.statXP = {"STR":0,"DEX":0,"CON":0,"INT":0,"WIS":0,"CHA":0,"Level":0};
-character.statBoonAvail = {"STR":0,"DEX":0,"CON":0,"INT":0,"WIS":0,"CHA":0,"Level":0};
+character.statXP = {"STR":0,"CON":0,"INT":0,"WIS":0,"Level":0};
+character.statBoonAvail = {"STR":0,"CON":0,"INT":0,"WIS":0,"Level":0};
 
 character.baseDamageMin = 0;
 character.baseDamageMax = 2;
@@ -17,7 +17,6 @@ character.bonusHP = 10;
 character.trainingStat = "";
 
 character.attackModifier = function () {return (1+0.01*character.stats["STR"]);}
-character.evasionModifier = function () {return (1+0.01*character.stats["DEX"]);}
 character.xpModifier = function () {return (1+0.01*character.stats["INT"]);}
 character.healModifier = function () {return (1+0.01*character.stats["WIS"]);}
 
