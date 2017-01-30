@@ -3,7 +3,7 @@ game.currentQuest = {};
 game.currentQuest.encounters = [];
 game.currentQuest.checks = [];
 game.currentQuest.currentEncInd = 0;
-var randStatArray = ["STR","DEX","CON","INT","WIS","CHA"];
+var randStatArray = ["STR","CON","INT","WIS"];
 
 function generateQuest(qlev){
   game.currentQuest.qlev = qlev;
